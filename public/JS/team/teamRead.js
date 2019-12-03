@@ -10,7 +10,7 @@ function loadStuff(e) {
 }
 
 function prepareTeamReadView(){
-    setTimeout(loadStuff, 100)
+    setTimeout(loadStuff, 300)
 }
 
 function finishTeamReadView(response){
