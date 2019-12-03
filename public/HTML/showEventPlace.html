@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>🏆Torneos!</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Own styles -->
+    <link rel="stylesheet" href="../CSS/eventplace/eventPlaceStyle.css">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+  <body>
+    <!-- Nav menu / header -->
+    <div id="nav-placeholder"></div>
+        <script>
+            $.get("../html/navbarloged.html", function(data){
+                $("#nav-placeholder").replaceWith(data);
+            });
+        </script>
+    <!-- Fin de Nav menu / header -->
+    <h1>Ver instalaciones</h1>
+    
+    <!--------------------------------------- Table section ---------------------------------------------->
+    <section>
+        <!-- Part of the following table design was taken from https://bootsnipp.com/snippets/kvZxd -->
+        <table class="table table-striped">
+            <thead>
+               <tr class="row-name">
+                  <th>Id</th>
+                  <th>Nombre</th>
+                  <th>Disciplina</th>
+                  <th>Detalle</th>
+                  <th>Acciones</th>
+               </tr>
+            </thead>   
+            <tbody id="tableEventPlaces">
+            </tbody>
+         </table>
+    </section>
+
+    <!--------------------------------------- Modal section ---------------------------------------------->  
+    <!-- Facility detail -->
+    <div class="modal fade" id="placeInformation" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+        <div class="modal-dialog modal-m" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 id="eventPlaceName" class="modal-title">Nombre del lugar</h5>
+                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                </div>
+                <div class="modal-body text-center">
+                    <div class="">
+                        <img id="eventPlaceImageModal" src="" width="400" height="200">
+                    </div>
+                    <p id="eventPlaceInfo" class="mt-2">
+                    </p>
+                    <!-- <iframe width="400" height="300" 
+                        id="gmap_canvas" 
+                        src="https://maps.google.com/maps?q=Parque%20Metropolitano&output=embed" 
+                        frameborder="0" scrolling="no" marginheight="0" marginwidth="0">
+                    </iframe> -->
+        
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Delete facility -->
+    <!-- Delete event -->
+    <div class="modal fade" id="deleteEventPlaceModal" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Eliminar instalación</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                </div>
+                <div class="modal-body">
+                    ¿Está seguro de eliminar esta instalación?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button id="deleteEventPlaceButton" type="button" class="btn btn-danger" onclick="deleteEventPlace()">Borrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+     <!-- Footer -->
+     <div class="image_landing_text">
+            <div id="nav-footerPlaceHolder">
+            </div>
+            <script>
+                $.get("../HTML/footer.html", function (data) {
+                $("#nav-footerPlaceHolder").replaceWith(data);
+                });
+            </script>
+        </div>
+    <!-- Own scripts -->
+    <script src="../JS/serverInfo.js"></script>
+    <script src="../JS/eventPlace/eventPlaceRead.js"></script>
+    <script src="../JS/eventPlace/eventPlaceUpdate.js"></script>
+    <script src="../JS/eventPlace/eventPlaceDelete.js"></script>
+    <script src="../JS/discipline/disciplineRead.js"></script>
+    <script>
+        prepareEventPlaceReadView();
+    </script>
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>

@@ -1,0 +1,32 @@
+h1{
+    text-align: center;
+}
+
+aside{
+    float: right;
+    width: 20%;
+}
+
+section{
+    float: left;
+    width: 80%;
+}
+
+.aside-title{
+    text-align: center;
+}
+
+.aside-event-list{
+    margin-right: 5%;
+}
+
+.aside-event-list li{
+    list-style-type: none;
+    margin-bottom: 2%;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.aside-event-list table{
+    margin-left: 2%;
+}

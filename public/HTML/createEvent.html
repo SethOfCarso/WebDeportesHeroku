@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>🏆Torneos!</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Own styles -->
+    <link rel="stylesheet" href="../CSS/event/eventStyle.css">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    
+  </head>
+  <body>
+    <!-- Nav menu / header -->
+    <div id="nav-placeholder"></div>
+        <script>
+            $.get("../html/navbarloged.html", function(data){
+                $("#nav-placeholder").replaceWith(data);
+            });
+        </script>
+    <!-- Fin de Nav menu / header -->
+    <h1>Crear evento</h1>
+    <form action="">
+        <div class="form-group m-4">
+            <!-- Name -->
+            <label for="eventName">Nombre:</label>
+            <input id="eventName" type="text" class="form-control w-100" required>
+            
+            <!-- Start and End dates -->
+            <div class="row mt-2">
+                <div class="col-6">
+                    <label for="dateStart">Inicio:</label>
+                    <input id="dateStart" type="date" class="form-control" required>           
+                </div>
+                <div class="col-6">
+                    <label for="dateEnd">Fin:</label>
+                    <input id="dateEnd" type="date" class="form-control" required>           
+                </div>
+            </div>
+
+            <!-- Image -->
+            <label for="eventImage" class="mt-2">Foto del evento:</label>
+            <input id="eventImage" type="text" class="form-control">
+              
+            <!-- Search match -->
+            <div class="row mt-2">
+                <!-- Search match bar -->
+                <div class="col-6">
+                    <label for="search">Buscar encuentro para añadirlo:</label>
+                    <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1"><i class="fa fa-search" aria-hidden="true"></i></span>
+                            </div>
+                        <input id="search" type="search" class="form-control" placeholder="Nombre del encuentro" autocomplete="off">
+                    </div>
+                    <div class="overflow-auto" style="height: 150px">
+                        <ul id="searchResults" class="list-group">
+                        </ul>
+                    </div>    
+                </div>
+                <!-- Matches added -->
+
+                <div class="col-6">
+                    Encuentros añadidos:
+                    <ul class="list-group overflow-auto" style="height: 200px">
+                        <div class="mt-2"></div>
+                        <div id="matchesAdded"></div>
+                    </ul>          
+                </div>
+            </div>
+
+            <!-- Submit -->
+            <button id="createEventBtn" class="btn btn-primary w-100 mt-3">Registrar evento</button>
+        </div>       
+    </form>
+
+     <!-- Footer -->
+     <div class="image_landing_text">
+            <div id="nav-footerPlaceHolder">
+            </div>
+            <script>
+                $.get("../footer.html", function (data) {
+                $("#nav-footerPlaceHolder").replaceWith(data);
+                });
+            </script>
+        </div>
+    <!-- Own Scripts -->
+    <script src="../JS/serverInfo.js"></script>
+    <script src="../JS/event/eventRead.js"></script>
+    <script src="../JS/event/eventCreate.js"></script>
+    <script src="../JS/match/matchRead.js"></script>
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>

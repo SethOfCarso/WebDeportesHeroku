@@ -1,0 +1,57 @@
+#imgPrincipal{
+    width: 100%;
+    max-width: 720px;
+}
+
+.image_landing_text{
+    background-color: #85459A;
+}
+
+.image_landing_text{
+    text-align: center;
+    color: white;
+}
+
+.tarjetas-tandero{
+    margin: 0 auto; /* Added */
+    float: none; /* Added */
+    width: 80%;
+}
+
+
+#triangle-topleft {
+    width: 0;
+    height: 0;
+    border-top: 100px solid #85459A;
+    border-right: 100vw solid transparent;
+  }
+
+  .background_gray{
+      background-color: #F6F6F6;
+  }
+
+  #triangle-topright {
+    width: 0;
+    height: 0;
+    border-top: 100px solid #F6F6F6;
+    border-left: 100vw solid transparent;
+  }
+
+  .morado{
+      color: #85459A
+  }
+
+  #triangle-topright-white{
+    width: 0;
+    height: 0;
+    border-top: 100px solid #ffffff;
+    border-left: 100vw solid transparent;
+  }
+
+  .card{
+    max-width: 480px;
+    margin: 0 auto; /* Added */
+    float: none; /* Added */
+    margin-bottom: 10px; /* Added */
+    
+  }

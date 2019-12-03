@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>🏆Torneos!</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link  href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link  href="https://use.fontawesome.com/releases/v5.1.1/css/all.css"
+    integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+  <link  href="../../CSS/LandingPage.css">
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+
+<body>
+  <!-- Nav menu / header -->
+  <div id="nav-placeholder"></div>
+  <script>
+    $.get("../html/navbarloged.html", function (data) {
+      $("#nav-placeholder").replaceWith(data);
+    });
+  </script>
+  <!-- Fin de Nav menu / header -->
+
+  <br>
+  <div class="text-center">
+    <h2>Bienvenido a tu edicion de cuenta!</h2>
+  </div>
+
+  <!-- Imagen -->
+  <div class="row mx-auto">
+
+    <!-- Primera columna -->
+    <div class="col " id="">
+      <!-- Tarjeta para imagen -->
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" id="imagenDisplay" src="https://randomuser.me/api/portraits/men/1.jpg" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">Imagen de usuario</h5>
+              <div class="form-group">
+                  <label for="imgFile">Agrega un url para tú imagen</label>
+                  <input type="text" id="imgInput " >
+                </div>
+            </div>
+          </div>
+    </div>
+
+
+    <!-- Segunda columna -->
+    
+    <div class="col">
+      <form action="">
+      <div class="userData ">
+        <!-- Nombre -->
+        <div class="edicionDatos px-3">
+
+          <div class="FullNameRow  border border-primary p-4">
+            <div class="row">
+              <div class="col">
+                <label for="name">Nombre</label>
+                <input type="text" name="fullname" id="name" class="form-control" placeholder=""
+                  aria-describedby="helpId" value="Nombre">
+              </div>
+              <div class="col">
+                <label for="lastName">Apellido</label>
+                <input type="text" name="fullname" id="lastName" class="form-control" placeholder=""
+                  aria-describedby="helpId" value="Apellido">
+              </div>
+            </div>
+            <!-- Correo electronico -->
+            <div class="form-group">
+              <label for="email">Correo electronico registrado</label>
+              <input type="text" name="emailLabel" id="email" class="form-control" placeholder=""
+                aria-describedby="helpId" value="correo electronico" readonly>
+            </div>
+            <!-- Fecha de nacimiento -->
+            <div class="form-group">
+              <label for="birthday">Fecha de nacimiento</label>
+              <input type="datetime" name="emailLabel" id="birthday" class="form-control" placeholder=""
+                aria-describedby="helpId" value="01/01/1994" readonly>
+            </div>
+            <!-- Tipo de usuario -->
+            <div class="form-group">
+              <label for="userType">Tipo de usuario</label>
+              <select id="userType" class="form-control" readonly>
+                <option selected>Usuario</option>
+                <option>Capitan</option>
+                <option>Administrador</option>
+                <option>Juez</option>
+              </select>
+            </div>
+            <!-- Actualizar contraseña -->
+            <div class="form-group">
+              <label for="contraseña">Actualizar contraseña</label>
+              <input type="password" name="contraseña" id="password" class="form-control" placeholder=""
+                aria-describedby="helpId" value="contraseña1234">
+            </div>
+            <!-- cierre de donde se encuentra contenedor los datos del usuario -->
+            <!-- <a class=" btn btn-primary" id="updateBtn" value="Actualizar datos"> -->
+            <a name="Hey" id="updateBtn" class="btn btn-primary" href="#" role="button">Actualizar datos</a>
+          </div>
+          
+
+        </div>
+      </form>
+      </div>
+    </div>
+  
+  </div>
+  <br>
+
+  <!-- Footer -->
+  <div class="image_landing_text">
+
+    <div id="nav-footerPlaceHolder">
+
+    </div>
+
+    <!-- Footer -->
+    <div class="image_landing_text">
+      <div id="nav-footerPlaceHolder">
+      </div>
+      <script>
+        $.get("../html/footer.html", function (data) {
+          $("#nav-footerPlaceHolder").replaceWith(data);
+        });
+      </script>
+    </div>
+    <!-- Fin del footer -->
+
+    <!-- JS -->
+    <script src="../JS/user/userUpdate.js"></script>
+    <script src="../JS/serverInfo.js"></script>
+    
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+</body>
+
+</html>

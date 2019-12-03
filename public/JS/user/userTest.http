@@ -1,0 +1,19 @@
+###
+GET http://127.0.0.1:3000/api/evento
+
+###
+Post http://127.0.0.1:3000/api/user
+Content-Type: application/json
+
+{
+        id: 123,
+        username: "Carso",
+        password: "123",
+        nombre: "Erick",
+        apellido: "Cardona Soto Maynez",
+        foto: "https://randomuser.me/api/portraits/men/25.jpg",
+        genero: "m",
+        tipoUsuario: "Usuario",
+        email: "cardona.erick@hotmail.com",
+        fechaNacimiento: "2019-11-15"
+      }

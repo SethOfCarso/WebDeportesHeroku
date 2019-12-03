@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
+  <body>
+
+    <!-- Nav menu / header -->
+    <div id="nav-placeholder"></div>
+        <script>
+            $.get("../html/navbarloged.html", function(data){
+                $("#nav-placeholder").replaceWith(data);
+            });
+        </script>
+    <!-- Fin de Nav menu / header -->
+
+    <h2 id="teamNameTitle" class="text-center">Creación de encuentros</h2>
+
+    <form action="">
+            <div class="row mx-auto">
+                <!--------------------------------- Primera columna ---------------------------->
+                <div class="col " id="">
+                    <!-- Tarjeta para imagen -->
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">Fecha del encuentro</h5>
+                            <div class="form-group">
+                                <!-- URL -->
+                                <label for="dateMatch" class="mt-2">Fecha:</label>
+                                <input id="dateMatch" type="date" class="form-control">
+                                <br>
+                                <label for="eventPlace">Lugar de Encuentro</label>
+                                <select id="eventPlace" class="form-control">
+                                    
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--------------------------------- Segunda columna ---------------------------->
+                <div class="col">
+                    <form action="">
+                        <div class="userData">
+                            <!-- Nombre del equipo -->
+                            <div class="form-group">
+
+                                <label for="firstTeam">Nombre del primer equipo</label>
+                                <select id="firstTeam" class="form-control">
+                                    
+                                </select>
+                                <!-- Poner equipos dispoibles -->
+
+                                <label for="secondTeam">Nombre del segundo equipo</label>
+                                <select id="secondTeam" class="form-control">
+                                </select>
+                                <!-- Poner equipos dispoibles -->
+
+
+                                <div class="form-row">
+                                        <div class="col">
+                                                <label for="scoreFirstTeam">Marcador primer equipo</label>
+                                          <input type="number" id="scoreFirstTeam" class="form-control" placeholder="##">
+                                        </div>
+                                        <div class="col">
+                                                <label for="scoreSecondTeam">Marcador segundo equipo</label>
+                                          <input type="number" id="scoreSecondTeam" class="form-control" placeholder="##">
+                                        </div>
+                                      </div>
+                                
+    
+                                <label for="idJuez">Jueces</label>
+                                <select id="idJuez" class="form-control">
+                                </select>
+                                <br>
+                                <a name="#" id="btnCreateMatch" class="btn btn-primary" href="#" role="button">Crear encuentro</a>
+
+                            </div>
+                        </div>
+                    </form>
+                        </div>
+                    </div>
+
+
+
+
+
+     <!-- Footer -->
+     <div class="image_landing_text">
+            <div id="nav-footerPlaceHolder">
+            </div>
+            <script>
+                $.get("../html/footer.html", function (data) {
+                    $("#nav-footerPlaceHolder").replaceWith(data);
+                });
+            </script>
+        </div>
+
+          <!-- JS  -->
+    <script src="../JS/serverInfo.js"></script>
+    <script src="../JS/match/matchCreate.js"></script>
+    <script src="../JS/team/teamRead.js"></script>
+    <script src="../JS/event/eventRead.js"></script>
+    <script src="../JS/eventPlace/eventPlaceRead.js"></script>
+    <script src="../JS/user/userRead.js"></script>
+    <script src="../JS/discipline/disciplineRead.js"></script>
+    
+      
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>

@@ -1,0 +1,433 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>🏆Torneos</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../CSS/landingpage.css">
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+
+<body>
+    
+    <!-- Nav menu / header -->
+    <div id="nav-placeholder"></div>
+        <script>
+            $.get("navbar.html", function(data){
+                $("#nav-placeholder").replaceWith(data);
+            });
+        </script>
+    <!-- Modal para iniciar sesión -->
+    <!-- Modal -->
+    <div class="modal fade" id="modelIdLogin" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Login in</h5>
+                    <button type="button"  class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+
+                    <div class="form-group">
+                        <label for="user">Usuario</label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1"> <i class="fa fa-user"
+                                        aria-hidden="true"></i> </span>
+                            </div>
+                            <input type="text" name="Usuario:" id="user" required class="form-control"
+                                placeholder="Usuario" aria-describedby="helpId">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="pass">Contraseña</label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1"> <i class="fa fa-lock"
+                                        aria-hidden="true"></i> </span>
+                            </div>
+                            <input type="password" name="Contraseña:" id="pass" required class="form-control"
+                                placeholder="Contraseña" aria-describedby="helpId">
+                        </div>
+                    </div>
+                    
+
+                </div>
+                <div class="modal-footer">
+                    <div>
+
+                    </div>
+                    <p> <a href="#" data-toggle="modal" id="lostPSW" > <i
+                                class="fa fa-unlock" aria-hidden="true"></i> Olvide mi contraseña </a></p>
+                    <p> <a href="#" data-toggle="modal" data-target="#modelIdRegistrer" data-dismiss="modal"> ¿No tienes
+                            cuenta? Registrate </a></p>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    <!-- <button type="button" class="btn btn-primary" data-dismiss="modal">  <i class="fa fa-paper-plane" aria-hidden="true" ></i> Log In</button> -->
+                    <!-- No checa si los datos hacen algo -->
+                    <a href="#" id="logInBtn" class="btn btn-primary"><i class="fa fa-paper-plane"
+                            aria-hidden="true"></i> Log In</a>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Modal para registrarte -->
+    <!-- Modal -->
+    <div class="modal fade" id="modelIdRegistrer" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Registrate</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <form action="" method="post">
+                <div class="modal-body">
+
+                    <div class="form-group">
+                        <label for="userName">Nombre</label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1"> <i class="fa fa-user"
+                                        aria-hidden="true"></i> </span>
+                            </div>
+                            <input type="text" name="Nombre de usuario" id="userName" required class="form-control"
+                                placeholder="Ingresa tu nombre" aria-describedby="helpId">
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="userLastName">Apellido</label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1"> <i class="fa fa-user"
+                                        aria-hidden="true"></i> </span>
+                            </div>
+                            <input type="text" name="Apellido" id="userLastName" required class="form-control"
+                                placeholder="Ingresa tu apellido" aria-describedby="helpId">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="userAge">Fecha de nacimiento</label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1"> <i class="fa fa-calendar"
+                                        aria-hidden="true"></i> </span>
+                            </div>
+                            <input type="date" min="01/01/2019" required name="Edad" id="userAge" class="form-control"
+                                placeholder="01/01/2000" aria-describedby="helpId">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="userMail">Correo</label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1"> <i class="fa fa-at"
+                                        aria-hidden="true"></i> </span>
+                            </div>
+                            <input type="email" name="Correo electronico" id="userMail" class="form-control"
+                                placeholder="tucorreo@tudominio.com" required aria-describedby="helpId">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="userMailConfirm">Confima tu correo</label>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1"> <i class="fa fa-at"
+                                            aria-hidden="true"></i> </span>
+                                </div>
+                                <input type="email" name="Correo electronico" id="userMailConfirm" class="form-control"
+                                    placeholder="tucorreo@tudominio.com" required aria-describedby="helpId">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="user">Usuario</label>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1"> <i class="fa fa-user"
+                                            aria-hidden="true"></i> </span>
+                                </div>
+                                <input type="text" name="USUARIO" id="userLogin" class="form-control"
+                                    placeholder="Ingresa el usuario a utilizar" required aria-describedby="helpId">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="userGender">Sexo</label>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1"> <i class="fa fa-user"aria-hidden="true"></i> </span>
+                                </div>
+                                <input type="radio" name="userGender" id="userGenderM" class="form-control" required aria-describedby="helpId" value="m"> Hombre <br>
+                                <input type="radio" name="userGender" id="userGenderF" class="form-control" required aria-describedby="helpId" value="f" > Mujer <br>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="userPass">Contraseña</label>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1"><i class="fa fa-lock"
+                                            aria-hidden="true"></i> </span>
+                                </div>
+
+                                <!-- Usar esta para probar patron -->
+                                <!-- <input type="password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$" name="Contraseña" id="userPass" class="form-control" placeholder="" required aria-describedby="helpId"> -->
+                                <input type="password" name="Contraseña" id="userPass" class="form-control"
+                                    placeholder="C0ntras3ñ44!!" required aria-describedby="helpId">
+                                <button type="button" class="btn btn-outline-warning" data-toggle="tooltip"
+                                    data-placement="top" title="Debe contener al menos:
+                1 Mayúsucula
+                1 Minuscula
+                1 Número
+                1 caractér especial ($#/#)
+                        ">
+                                    Info
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="userPassConfirm">Confirmacion de contraseña</label>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1"><i class="fa fa-lock"
+                                            aria-hidden="true"></i> </span>
+                                </div>
+                                <!-- Usar esta para probar patron -->
+                                <!-- <input type="password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$" name="Contraseña" id="userPassConfirm" class="form-control" placeholder="" required aria-describedby="helpId"> -->
+                                <input type="password" name="Contraseña" id="userPassConfirm" class="form-control"
+                                    placeholder="C0ntras3ñ44!!" required aria-describedby="helpId">
+                                <button type="button" class="btn btn-outline-warning" data-toggle="tooltip"
+                                    data-placement="top" title="Debe contener al menos:
+                1 Mayúsucula
+                1 Minuscula
+                1 Número
+                1 caractér especial ($#/#)
+                        ">
+                                    Info
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <p>¿Ya tienes cuenta? <br> 
+                            <a href="#" data-toggle="modal" data-target="#modelIdLogin"
+                                data-dismiss="modal"> <i class="fa fa-unlock" aria-hidden="true"></i> Ingresa </a></p>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal"> Cerrar Registro</button>
+                        <!-- <button type="button" class="btn btn-primary" data-target="modelIdConfirmMail"  data-dismiss="modal" >  <i class="fa fa-paper-plane" aria-hidden="true"></i> Enviar registro</button> -->
+                        <!-- <a type="button" class="btn btn-primary" data-target="#modelIdConfirmMail"  data-dismiss="modal" >  <i class="fa fa-paper-plane" aria-hidden="true"></i> Enviar registro</a> -->
+                        <a href="#" id="registrerBtn" class="btn btn-primary" data-toggle="modal" data-target="#modelIdConfirmMail"
+                            data-dismiss="modal"> <i class="fa fa-paper-plane" aria-hidden="true"></i> Enviar
+                            registro</a>
+                            <!-- <input type="submit"  id="registrerBtn" class="btn btn-primary" value="Mandar registro" > <i class="fa fa-paper-plane" aria-hidden="true"></i>> -->
+                        <!-- modelIdConfirmMail -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+        </form>
+
+
+    </div>
+
+    <div class="background_gray">
+
+
+        <!-- div para indicar la primera imagen junto con texto -->
+        <div class="image_landing_text">
+            <div class="landing_text">
+                <h2>Organiza tu <b>Torneo</b>,</h2>
+                <h2>transparente, rápido, y  <b>automatizado</b></h2>
+            </div>
+            <div class="image_landing container">
+                <img id="imgPrincipal"src="../Images/Torneo.jpg" alt="imagenTorneos">
+            </div>
+            <br>
+        </div>
+        <!-- Triangulo para darle estilo -->
+        <div id="triangle-topleft">
+        </div>
+        <!-- Quienes usan Tandero -->
+        <h2 class="text-center">Quienes usan <b>Torneos?</b></h2>
+
+        <!-- Tarjetas de tandero -->
+        <div class="text-center tarjetas-tandero">
+
+        <div class="row">
+            <div class="col-sm-5 mx-5 mx-auto">
+                <div class="card">
+                    <img class="card-img-top" src="../Images/Freelancer.png" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">"Es facil armas torneos semanales"</h5>
+                        <p class="card-text">Me invitaron en un principio y ahora yo los organizo con comodidad.</p>
+                        <div class="card-footer text-muted">
+                            <p>Mateo Rodríguez / Cpt. Aclas </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-5  mx-auto">
+                <div class="card">
+                    <img class="card-img-top" src="../Images/Agencies.png" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">"Excelente pagina"</h5>
+                        <p class="card-text">Es una excelente manera de ver los torneos de la colonia.</p>
+                        <div class="card-footer text-muted">
+                            <p>Cotos vecinales / La Americana</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+        <div class="row">
+            <div class="col-sm-5 mx-5 mx-auto">
+                <div class="card">
+                    <img class="card-img-top" src="../Images/Saas.png" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">"Ya no hay razon para que el equipo falte"</h5>
+                        <p class="card-text">Soliamos perder por cuestion de que no se avisaba al equipo en tiempo.</p>
+                        <div class="card-footer text-muted">
+                            <p>Karla Andrea Herman / Capta. Arcos</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-5 mx-auto">
+                <div class="card">
+                    <img class="card-img-top" src="../Images/Teams.png" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">"Facil de utilizar"</h5>
+                        <p class="card-text">Buscamos aplicaciones para usarla en los torneos y nos quedo perfecto.</p>
+                        <div class="card-footer text-muted">
+                            <p>Juan Pablo / participante </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!-- Triangulo para darle estilo -->
+    <div id="triangle-topright">
+    </div>
+
+    <!-- Caracteristicas que hacen diferente al producto -->
+    <div class="background_white">
+        <br>
+        <h2 class="text-center">
+            <b> Caracteristicas </b>
+        </h2>
+
+        <!-- Cartas a la izquierda / derecha -->
+        <div class="card mb-3 text-center mx-auto border-0" style="max-width: 740px;">
+            <div class="row no-gutters">
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title morado">Organizala como <b>TU</b> quieras</h5>
+                        <p class="card-text">Facilmente invita a clientes, colegas, amigos, compañeros a los que deses,
+                            añadelos y que todo sea visual para todos, sea tan transparente como el agua, ahorrale tiempo
+                            a todos</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <img src="../Images/organizala.jpg" class="card-img" alt="...">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="background_gray py-4">
+
+        <div class="card mb-3 text-center mx-auto border-0" style="max-width: 740px;">
+            <div class="row no-gutters">
+                <div class="col-md-4">
+                    <img src="../Images/robots.png" class="card-img" alt="...">
+                </div>
+                <div class="col-md-8 background_gray">
+                    <div class="card-body background_gray">
+                        <h5 class="card-title morado">Automatizada</h5>
+                        <p class="card-text">Olvidate totalmente de llevar el control a papel y estar viendo a quien le
+                            toca cada semana, los partidos.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br>
+    <br>
+
+ 
+
+
+
+    <!-- Cookies -->
+    <!-- Imagenes con boton -->
+    <!-- Explicación mas detalle -->
+
+
+    <!-- Footer -->
+    <div class="image_landing_text">
+           <!-- Triangulo para darle estilo -->
+    <div id="triangle-topright-white" class="background_white">
+        </div>
+
+        <div id="nav-footerPlaceHolder">
+
+        </div>
+
+        <script>
+            $.get("footer.html", function (data) {
+                $("#nav-footerPlaceHolder").replaceWith(data);
+            });
+        </script>
+    </div>
+    <!-- End of Footer-->
+
+    <!-- Cargar todos los JS -->
+    <script src="../JS/serverInfo.js"></script>
+    <script src="../JS/user/userLogin.js"></script>
+    <script src="../JS/user/userCreate.js"></script>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+</body>
+
+</html>

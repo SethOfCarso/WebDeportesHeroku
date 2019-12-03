@@ -1,0 +1,5 @@
+Before you start the server remember to install all dependecies.
+You should issue the command:
+    - npm install
+Then you can run the server with:
+    - npm start
