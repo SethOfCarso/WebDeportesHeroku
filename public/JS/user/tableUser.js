@@ -108,6 +108,20 @@ function generatorHTML(userObject) {
     `;
 }
 
+function editID(idUser) {
+    console.log(idUser);
+    let userToModify = {
+        id: idUser
+    }
+    
+    // console.log(userToModify);
+    let JSONuser = JSON.stringify(userToModify)
+    // console.log(JSONuser);
+    localStorage.setItem("editUser",JSONuser)
+    window.location.href ="editarPerfilEscogido.html";
+}
+
+
 function removeID(e) {
     // console.log("Hola" + e)
     let deleteUser ={
