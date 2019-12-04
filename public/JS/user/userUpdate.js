@@ -45,7 +45,13 @@ let user = {
    name.value = userData.nombre;
    lname.value = userData.apellido;
    email.value = userData.email;
-   birthday.value = userData.fechaNacimiento;
+//    Mostrar solo dia mes y año sin tiempo
+// Si funciona normalmente 
+// birthday.value = userData.fechaNacimiento;
+  let fechaNac = userData.fechaNacimiento.slice(0,10)
+  fechaNac = fechaNac.slice(0,10)
+  console.log(fechaNac);
+   birthday.value = fechaNac;
    userType.value = userData.tipoUsuario;
    password.value = userData.password;
    imagen.value = userData.foto;
@@ -63,6 +69,9 @@ let user = {
        
    }
    
+   if(userData.tipoUsuario == "Administrador" ){
+       document.getElementById("userType").disabled = false;
+   }
 
 function updateUser(updateUser){
     console.log("Entre al update");
@@ -71,7 +80,8 @@ function updateUser(updateUser){
 user.nombre = document.getElementById("name").value;
 user.apellido = document.getElementById("lastName").value;
 user.email = document.getElementById("email").value;
-user.fechaNacimiento = document.getElementById("birthday").value;
+// user.fechaNacimiento = document.getElementById("birthday").value;
+user.fechaNacimiento = userData.fechaNacimiento;
 user.tipoUsuario = document.getElementById("userType").value;
 user.password = document.getElementById("password").value;
 user.id = idUser
