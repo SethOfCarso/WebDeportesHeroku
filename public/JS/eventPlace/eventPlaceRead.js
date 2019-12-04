@@ -3,15 +3,15 @@
 let eventPlaces = null;
 
 function prepareEventPlaceReadView(){
-    loadEventPlaces(finishEventPlaceReadView);
-}
+    loadEventPlacesPro().then((response) => {
+        // Save the events array
+        eventPlaces = response;
+        loadDisciplinesPro().then((response) => {
+            // Load information into elements
+            convertEventPlaceToHtml();
+        });
+    });
 
-function finishEventPlaceReadView(response){
-    // Save the events array
-    eventPlaces = response;
-
-    // Load information into elements
-    convertEventPlaceToHtml();
 }
 
 function loadEventPlaces(callback){
@@ -120,4 +120,62 @@ function getDisciplinesNames(disciplines){
         disciplinesNames.push(getDisciplineById(disciplines[i]).nombreDisciplina);
 
     return disciplinesNames;
+}
+//----------------------------------------------------------------------------------------------------------
+function loadEventPlacesPro(){
+    return new Promise((resolve, reject) => {
+        // Prepare and send request
+        let xhr = new XMLHttpRequest();
+        let url = serverInfo.hostname + serverInfo.port + serverInfo.eventPlaceEndPoint;
+
+        xhr.open("GET", url);
+        xhr.send();
+
+        xhr.onload = () => {
+            let response = JSON.parse(xhr.response);
+
+            if(xhr.status == 200){
+                if(response.length == 0){
+                    alert("No hay lugares dados de alta");
+                    reject();
+                } else {
+                    eventPlaces = response;
+                    resolve(response);
+                } 
+            } else {
+                alert(response.error);
+                reject();
+            }
+        };
+        xhr.onerror = () => {
+            alert("Hubo un error al cargar los lugares"); 
+            reject();
+        };
+    });
+}
+
+function loadSingleEventPlacePro(idEventPlace){
+    return new Promise((resolve, reject) => {
+        // Prepare and send request
+        let xhr = new XMLHttpRequest();
+        let url = serverInfo.hostname + serverInfo.port + serverInfo.eventPlaceEndPoint + "/" + idEventPlace;
+
+        xhr.open("GET", url);
+        xhr.send();
+
+        xhr.onload = () => {
+            let response = JSON.parse(xhr.response);
+
+            if(xhr.status == 200){
+                resolve(response[0]);
+            } else {
+                alert(response.error);
+                reject();
+            }
+        };
+        xhr.onerror = () => {
+            alert("Hubo un error al cargar el lugar"); 
+            reject();
+        };
+    });
 }
