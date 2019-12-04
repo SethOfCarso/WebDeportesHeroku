@@ -8,10 +8,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link  href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link  href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link  href="../CSS/landingpage.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../CSS/landingpage.css">
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
 
@@ -99,7 +99,7 @@
                     </button>
                 </div>
 
-                <form action="" method="post">
+                <form action="#" method="">
                 <div class="modal-body">
 
                     <div class="form-group">
@@ -150,7 +150,7 @@
                                 placeholder="tucorreo@tudominio.com" required aria-describedby="helpId">
                         </div>
 
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                             <label for="userMailConfirm">Confima tu correo</label>
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
@@ -160,7 +160,7 @@
                                 <input type="email" name="Correo electronico" id="userMailConfirm" class="form-control"
                                     placeholder="tucorreo@tudominio.com" required aria-describedby="helpId">
                             </div>
-                        </div>
+                        </div> -->
 
                         <div class="form-group">
                             <label for="user">Usuario</label>
@@ -196,8 +196,8 @@
                                 <!-- Usar esta para probar patron -->
                                 <!-- <input type="password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$" name="Contraseña" id="userPass" class="form-control" placeholder="" required aria-describedby="helpId"> -->
                                 <input type="password" name="Contraseña" id="userPass" class="form-control"
-                                    placeholder="C0ntras3ñ44!!" required aria-describedby="helpId">
-                                <button type="button" class="btn btn-outline-warning" data-toggle="tooltip"
+                                    placeholder="Ingresa la contraseña a utilizar" required aria-describedby="helpId">
+                                <!-- <button type="button" class="btn btn-outline-warning" data-toggle="tooltip"
                                     data-placement="top" title="Debe contener al menos:
                 1 Mayúsucula
                 1 Minuscula
@@ -205,20 +205,20 @@
                 1 caractér especial ($#/#)
                         ">
                                     Info
-                                </button>
+                                </button> -->
                             </div>
                         </div>
 
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                             <label for="userPassConfirm">Confirmacion de contraseña</label>
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="basic-addon1"><i class="fa fa-lock"
                                             aria-hidden="true"></i> </span>
-                                </div>
+                                </div> -->
                                 <!-- Usar esta para probar patron -->
                                 <!-- <input type="password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$" name="Contraseña" id="userPassConfirm" class="form-control" placeholder="" required aria-describedby="helpId"> -->
-                                <input type="password" name="Contraseña" id="userPassConfirm" class="form-control"
+                                <!-- <input type="password" name="Contraseña" id="userPassConfirm" class="form-control"
                                     placeholder="C0ntras3ñ44!!" required aria-describedby="helpId">
                                 <button type="button" class="btn btn-outline-warning" data-toggle="tooltip"
                                     data-placement="top" title="Debe contener al menos:
@@ -230,7 +230,7 @@
                                     Info
                                 </button>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="modal-footer">
                         <p>¿Ya tienes cuenta? <br> 
@@ -239,10 +239,8 @@
                         <button type="button" class="btn btn-secondary" data-dismiss="modal"> Cerrar Registro</button>
                         <!-- <button type="button" class="btn btn-primary" data-target="modelIdConfirmMail"  data-dismiss="modal" >  <i class="fa fa-paper-plane" aria-hidden="true"></i> Enviar registro</button> -->
                         <!-- <a type="button" class="btn btn-primary" data-target="#modelIdConfirmMail"  data-dismiss="modal" >  <i class="fa fa-paper-plane" aria-hidden="true"></i> Enviar registro</a> -->
-                        <a href="#" id="registrerBtn" class="btn btn-primary" data-toggle="modal" data-target="#modelIdConfirmMail"
-                            data-dismiss="modal"> <i class="fa fa-paper-plane" aria-hidden="true"></i> Enviar
-                            registro</a>
-                            <!-- <input type="submit"  id="registrerBtn" class="btn btn-primary" value="Mandar registro" > <i class="fa fa-paper-plane" aria-hidden="true"></i>> -->
+                        <a href="#" id="registrerBtn" class="btn btn-primary" data-toggle="modal" data-target="#modelIdConfirmMail" data-dismiss="modal"> <i class="fa fa-paper-plane" aria-hidden="true"></i> Enviar registro</a>
+                            <!-- <input type="submit"  id="registrerBtn" class="btn btn-primary" value="Mandar registro" data-target="#modelIdConfirmMail"  >  -->
                         <!-- modelIdConfirmMail -->
                     </div>
                 </div>
@@ -416,6 +414,7 @@
     <script src="../JS/serverInfo.js"></script>
     <script src="../JS/user/userLogin.js"></script>
     <script src="../JS/user/userCreate.js"></script>
+    <script src="../JS/user/userRead.js"></script>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

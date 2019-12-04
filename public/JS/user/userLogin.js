@@ -44,7 +44,7 @@ function logInUser(e) {
     // xhr.open("POST", url);
     xhr.setRequestHeader("Content-Type", "application/json; charset=utf-8");
     xhr.send(null);
-
+    let flagUser = 1;
     xhr.onload = () => {
         // console.log(xhr);
         
@@ -53,6 +53,7 @@ function logInUser(e) {
         for (let index = 0; index < response.length; index++) {
             // console.log(response[index].email);
             if(response[index].username == userValue){
+                flagUser= 0;
                 response = response[index]
 
                 // console.log("Comparacion del if : " + response.password + " vs " + passValue);
@@ -69,6 +70,10 @@ function logInUser(e) {
                     }     
             
             }
+            
+        }
+        if(flagUser == 1){
+            alert("Parece que tu usuario no existe en nueestra base de datos")
         }
 
     };
