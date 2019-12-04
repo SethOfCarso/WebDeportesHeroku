@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Own styles -->
-    <link href="../../css/encuentros/encuentros.css">
+    <link href="/css/encuentros/encuentros.css">
 
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -28,7 +28,7 @@
 <body>
     <div id="nav-placeholder"></div>
     <script>
-        $.get("../HTML/navbarloged.html", function (data) {
+        $.get("../html/navbarloged.html", function (data) {
             $("#nav-placeholder").replaceWith(data);
         });
     </script>
@@ -49,7 +49,7 @@
                     <th>Equipo Visitante</th>
                     <th>Marcador</th>
                     <th>Ganador</th>
-                    <th>Arbitro</th>
+                    
                     <th class="text-center">Editar</th>
                     <th class="text-center">Borrar</th>
 
@@ -76,7 +76,7 @@
         <div id="nav-footerPlaceHolder">
         </div>
         <script>
-            $.get("../HTML/footer.html", function (data) {
+            $.get("../html/footer.html", function (data) {
                 $("#nav-footerPlaceHolder").replaceWith(data);
             });
         </script>

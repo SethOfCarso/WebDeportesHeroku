@@ -117,8 +117,7 @@ function loadDataInHtml(matchesObject) {
                 <td>${nombres[0]}</td>
                 <td>${nombres[2]}</td>
                 <td>${scoreResultado}</td>
-                <td>${ganador}</td>
-                <td>Cate</td>
+                <td>${ganador}</td>             
                 <td>
                     <a id="${idMongo}" href="editEncuentro.html" onclick="saveidMatch(this.id)">
                         <button type="submit">
@@ -153,23 +152,24 @@ function loadMatches(){
 
         xhr.onload = () => {
             let response = JSON.parse(xhr.response);
+            // console.log(response);
 
             if(xhr.status == 200){
                 if(response.length == 0){
                     alert("No hay encuentros dados de alta");
-                    reject();
+                    resolve();
                 } else {
                     myMatches = response;
-                    resolve(response);
+                    resolve();
                 } 
             } else {
                 alert(response.error);
-                reject();
+                resolve();
             }
         };
         xhr.onerror = () => {
             alert("Hubo un error al cargar los encuentros"); 
-            reject();
+            resolve();
         };
     });
 }
