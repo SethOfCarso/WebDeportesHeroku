@@ -13,36 +13,37 @@ function prepareEventPlaceUpdateView(){
     // Get the parameter in the URL
     let url = new URL(window.location);
     let idEventPlace = url.searchParams.get("id");
-    
-    loadSingleEventPlace(idEventPlace, finishEventPlaceUpdateView);
+
+    loadSingleEventPlacePro(idEventPlace).then((response) => {
+        // Save the event place
+        eventPlace = response;
+
+        loadDisciplinesPro().then((response) => {
+            // Load information into the view
+            fillEventPlaceFields();
+
+            // Behaviour in the search bar
+            searchBar.addEventListener("keyup", (event) => {
+                if(searchBar.value.trim() == ""){
+                    searchResults.hidden = true;
+                } else {
+                    searchResults.hidden = false;
+                }
+            
+                // Retrieve the disciplines and load them in the view
+                searchDisciplineByName(searchBar.value, loadResults);
+            });
+            searchBar.addEventListener("mouseout", (event) => {
+                if(searchBar.value.trim() == ""){
+                    searchResults.hidden = true;
+                } else {
+                    searchResults.hidden = false;
+                }
+            });
+        });
+    });
 }
 
-function finishEventPlaceUpdateView(response){
-    // Save the event place
-    eventPlace = response;
-
-    // Load information into the view
-    fillEventPlaceFields();
-
-    // Behaviour in the search bar
-    searchBar.addEventListener("keyup", (event) => {
-        if(searchBar.value.trim() == ""){
-            searchResults.hidden = true;
-        } else {
-            searchResults.hidden = false;
-        }
-    
-        // Retrieve the disciplines and load them in the view
-        searchDisciplineByName(searchBar.value, loadResults);
-    });
-    searchBar.addEventListener("mouseout", (event) => {
-        if(searchBar.value.trim() == ""){
-            searchResults.hidden = true;
-        } else {
-            searchResults.hidden = false;
-        }
-    });
-}
 
 function fillEventPlaceFields(){
     // Load all the fields with the event place information
