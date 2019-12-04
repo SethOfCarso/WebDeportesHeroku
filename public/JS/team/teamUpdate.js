@@ -9,18 +9,6 @@ function goUpdateTeam(idTeam){
     window.location.href = "../HTML/modifyTeam.html" + "?id=" + idTeam;
 }
 
-function loadAll(){
-    // Get the parameter in the URL
-    let url = new URL(window.location);
-    let idTeam = url.searchParams.get("id");
-    
-    loadSingleTeam(idTeam, finishTeamUpdateView);
-}
-
-function prepareTeamUpdateView(){
-    setTimeout(loadAll, 100);
-}
-
 function updateTeam(e){
     // Get the information
     let teamImage = document.getElementById("teamImageURL").value;
@@ -66,21 +54,28 @@ function updateTeam(e){
     };
 }
 
-function prepareEventUpdateView(){
+function prepareTeamUpdateView(){
     // Get the parameter in the URL
     let url = new URL(window.location);
     let idTeam = url.searchParams.get("id");
 
-    loadDisciplinesCB(loadListOfDisciplines);
-    loadSingleTeam(idTeam, finishTeamUpdateView);
+    loadSingleTeamPro(idTeam).then((response) => {
+        // Save the selected team
+        team = response;
+
+        loadUsersPro().then((response) => {       
+            loadDisciplinesPro().then((response) => {
+                loadListOfDisciplines(response);
+                // Once I have all the information I need, load it into elements
+                finishTeamUpdateView();
+            });
+        });
+    });
 }
 
 function finishTeamUpdateView(response){
-    // Save the event
-    team = response;
-
     // Load information into the view
-    setTimeout(fillTeamFields, 200);
+    fillTeamFields();
 
     // Behaviour in the search bar
     searchBar.addEventListener("keyup", (event) => {
