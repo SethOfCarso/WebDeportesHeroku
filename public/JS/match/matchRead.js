@@ -153,24 +153,23 @@ function loadMatches(){
 
         xhr.onload = () => {
             let response = JSON.parse(xhr.response);
-            // console.log(response);
 
             if(xhr.status == 200){
                 if(response.length == 0){
                     alert("No hay encuentros dados de alta");
-                    resolve();
+                    reject();
                 } else {
                     myMatches = response;
-                    resolve();
+                    resolve(response);
                 } 
             } else {
                 alert(response.error);
-                resolve();
+                reject();
             }
         };
         xhr.onerror = () => {
             alert("Hubo un error al cargar los encuentros"); 
-            resolve();
+            reject();
         };
     });
 }
