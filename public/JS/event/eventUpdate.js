@@ -9,43 +9,38 @@ function goUpdateEvent(idEvent){
     window.location.href = "../HTML/modifyEvent.html" + "?id=" + idEvent;
 }
 
-
-function loadAll(){
+function prepareEventUpdateView(){
     // Get the parameter in the URL
     let url = new URL(window.location);
     let idEvent = url.searchParams.get("id");
-    
-    loadSingleEvent(idEvent, finishEventUpdateView);
-}
 
-function prepareEventUpdateView(){
-    setTimeout(loadAll, 300);
-}
+    loadSingleEventPro(idEvent).then((response) => {
+        // Save the event
+        event = response;
 
-function finishEventUpdateView(response){
-    // Save the event
-    event = response;
+        loadMatches().then((response) => {
+            // Load information into the view
+            fillEventFields();
 
-    // Load information into the view
-    fillEventFields();
-
-    // Behaviour in the search bar
-    searchBar.addEventListener("keyup", (event) => {
-        if(searchBar.value.trim() == ""){
-            searchResults.hidden = true;
-        } else {
-            searchResults.hidden = false;
-        }
-    
-        // Retrieve the matches and load them in the view
-        searchMatchByName(searchBar.value, loadResults);
-    });
-    searchBar.addEventListener("mouseout", (event) => {
-        if(searchBar.value.trim() == ""){
-            searchResults.hidden = true;
-        } else {
-            searchResults.hidden = false;
-        }
+            // Behaviour in the search bar
+            searchBar.addEventListener("keyup", (event) => {
+                if(searchBar.value.trim() == ""){
+                    searchResults.hidden = true;
+                } else {
+                    searchResults.hidden = false;
+                }
+            
+                // Retrieve the matches and load them in the view
+                searchMatchByName(searchBar.value, loadResults);
+            });
+            searchBar.addEventListener("mouseout", (event) => {
+                if(searchBar.value.trim() == ""){
+                    searchResults.hidden = true;
+                } else {
+                    searchResults.hidden = false;
+                }
+            });
+        });
     });
 }
 
