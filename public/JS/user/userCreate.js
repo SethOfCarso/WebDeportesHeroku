@@ -50,21 +50,81 @@ function createUser(e){
     /**
      * link values.
      */
-    let userValue = userCreate.value;
-    let passValue = passCreate.value;
-    let nameValue = nameCreate.value;
-    let lNameValue = lNameCreate.value;
-    let photoValue = photoCreate.value;
-    let genderValue = genderCreate.value;
-    for (let  i = 0, length = genderCreate.length; i < length; i++) {
-        if (genderCreate[i].checked) {
-            genderValue = genderCreate[i].value;
-            break;
+    let userValue = null;
+    let passValue  = null;
+    let nameValue = null;
+    let lNameValue = null;
+    let emailValue = null;
+    let birthdayValue= null;
+    let genderValue = null;
+
+    if(userCreate.value.length >0){
+        if(validateUsername(userCreate.value)){
+            userValue = userCreate.value;
+        }else
+        return
+        
+    }else{
+        alert("El valor de usuario esta vacio")
+        return;
+    }
+    if(passCreate.value.length > 0){
+        passValue = passCreate.value;
+    } else {
+        alert("La contraseña esta vacía");
+        return;
+    }
+    if(nameCreate.value.length > 0){
+         nameValue = nameCreate.value;
+    } else {
+        alert("El nombre se encuentra vacio");
+        return;
+    }
+    if(lNameCreate.value.length > 0){
+         lNameValue = lNameCreate.value;
+    } else {
+        alert("El apellido se encuentra vacio");
+        return;
+    }
+    let flagGender = 1;
+    let photoValue = photoCreate.value;     
+    
+        genderValue = genderCreate.value;
+        for (let  i = 0, length = genderCreate.length; i < length; i++) {
+            if (genderCreate[i].checked) {
+                flagGender= 0;
+                genderValue = genderCreate[i].value;
+                break;
+            }
+        }
+        if(flagGender == 1){
+            alert("No selecciono un genero")
+            return
+        }
+    
+    
+    let userTypeValue = "Usuario"
+    if(emailCreate.value.length > 0){
+        if(ValidateEmail(emailCreate.value)){
+        if(validateEmailName(emailCreate.value)){
+            emailValue = emailCreate.value;
+            console.log(emailValue);
+        } else{
+            return
         }
     }
-    let userTypeValue = "Usuario"
-    let emailValue = emailCreate.value;
-    let birthdayValue = birthdayCreate.value;
+    } else {
+        alert("El valor del correo se encuentra vacio")
+        return
+    }
+    
+    if(birthdayCreate.value.length > 0){
+        birthdayValue = birthdayCreate.value;    
+    } else {
+        alert("El valor de fecha de nacimiento se encuentra vacio")
+        return;
+    }
+    
 
     /**
      * Link value with object
@@ -184,4 +244,36 @@ function getLastId(){
 
     let idRand = Math.floor(Math.random() * 10000000)
     return idRand
+}
+
+function ValidateEmail(mail) 
+{
+//  if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(myForm.emailAddr.value))
+ if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail))
+  {
+    return (true)
+  }
+    alert("Metiste un email que no cumple con las caracteristicas de email")
+    return (false)
+}
+
+function validateUsername(user){
+    // users son todos los usuarios existentes por el momento
+    for(let i = 0; i< users.length;i++){
+        if(users[i].username == user){
+            alert("Ya existe un usuario con ese username");
+            return false
+        }
+    }
+    return true
+}
+
+function validateEmailName(email){
+    for(let i = 0; i< users.length;i++){
+        if(users[i].email == email){
+            alert("Ya existe un usuario con ese email");
+            return false
+        }
+    }
+    return true
 }
