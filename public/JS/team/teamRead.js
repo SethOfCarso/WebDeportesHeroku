@@ -3,23 +3,17 @@
 let teams = null;
 let selectedTeam = null;
 
+// function prepareTeamReadView(){
+//     finishTeamReadView();
+// }
 
+// function finishTeamReadView(response){
+//     // Save the teams array
+//     teams = response;
 
-function loadStuff(e) {
-    loadTeams(finishTeamReadView);
-}
-
-function prepareTeamReadView(){
-    setTimeout(loadStuff, 300)
-}
-
-function finishTeamReadView(response){
-    // Save the teams array
-    teams = response;
-
-    // Load information into elements
-    convertTeamToHtml();
-}
+//     // Load information into elements
+//     convertTeamToHtml();
+// }
 
 function loadTeams(callback){
     // Prepare and send request
@@ -101,26 +95,21 @@ function goReadTeamDetail(idTeam){
     window.location.href = "../HTML/showTeamDetail.html" + "?id=" + idTeam;
 }
 
-function loadStuff2(e) {
-    // Get the parameter in the URL
-    let url = new URL(window.location);
-    let idTeam = url.searchParams.get("id");
+// function prepareTeamDetailReadView(){
+//     // Get the parameter in the URL
+//     let url = new URL(window.location);
+//     let idTeam = url.searchParams.get("id");
     
-    loadSingleTeam(idTeam, finishTeamDetailReadView);
-}
+//     loadSingleTeam(idTeam, finishTeamDetailReadView);
+// }
 
+// function finishTeamDetailReadView(response){
+//     // Save the selected team
+//     selectedTeam = response;
 
-function prepareTeamDetailReadView(){
-    setTimeout(loadStuff2, 100)
-}
-
-function finishTeamDetailReadView(response){
-    // Save the selected team
-    selectedTeam = response;
-
-    // Load information into elements
-    fillTeamDetailsFields();
-}
+//     // Load information into elements
+//     fillTeamDetailsFields();
+// }
 
 function fillTeamDetailsFields(){
     let teamNameTitle = document.getElementById("teamNameTitle");
@@ -171,4 +160,95 @@ function fillTeamDetailsFields(){
             `;
     }).join("");
     teamMembersSection.innerHTML = teamMembersHTML;
+}
+//-------------------------------------------------------------------------------------------------------------
+function prepareTeamReadView(){
+    loadTeamsPro().then((response) => {
+        // Get the teams
+        teams = response;
+
+        loadDisciplinesPro().then((response) => {
+            // Load information into elements
+            convertTeamToHtml();
+        });
+    });
+}
+
+function loadTeamsPro(){
+    return new Promise((resolve, reject) =>{
+        // Prepare and send request
+        let xhr = new XMLHttpRequest();
+        let url = serverInfo.hostname + serverInfo.port + serverInfo.teamEndPoint;
+
+        xhr.open("GET", url);
+        xhr.send();
+
+        xhr.onload = () => {
+            let response = JSON.parse(xhr.response);
+
+            if(xhr.status == 200){
+                if(response.length == 0){
+                    alert("No hay equipos dados de alta");
+                    reject();
+                } else {
+                    teams = response;
+                    resolve(response);
+                } 
+            } else {
+                alert(response.error);
+                reject();
+            }
+        };
+        xhr.onerror = () => {
+            alert("Hubo un error al cargar los equipos"); 
+            reject();
+        };
+    });
+}
+
+
+
+
+function prepareTeamDetailReadView(){
+    // Get the parameter in the URL
+    let url = new URL(window.location);
+    let idTeam = url.searchParams.get("id");
+    
+    loadSingleTeamPro(idTeam).then((response) => {
+        // Save the selected team
+        selectedTeam = response;
+
+        loadUsersPro().then((response) => {       
+            loadDisciplinesPro().then((response) => {
+                // Once I have all the information I need, load it into elements
+                fillTeamDetailsFields();
+            });
+        });
+    });
+}
+
+function loadSingleTeamPro(idTeam){
+    return new Promise((resolve, reject) =>{
+        // Prepare and send request
+        let xhr = new XMLHttpRequest();
+        let url = serverInfo.hostname + serverInfo.port + serverInfo.teamEndPoint + "/" + idTeam;
+
+        xhr.open("GET", url);
+        xhr.send();
+
+        xhr.onload = () => {
+            let response = JSON.parse(xhr.response);
+
+            if(xhr.status == 200){
+                resolve(response[0]);
+            } else {
+                alert(response.error);
+                reject();
+            }
+        };
+        xhr.onerror = () => {
+            alert("Hubo un error al cargar el equipo");
+            reject();
+        };
+    });
 }
