@@ -88,3 +88,35 @@ function loadDisciplinesCB(callback){
         alert("Hubo un error al cargar las disciplinas"); 
     };
 }
+//-----------------------------------------------------------------------------------------------------------
+function loadDisciplinesPro(){
+    return new Promise((resolve, reject) => {
+        // Prepare and send request
+        let xhr = new XMLHttpRequest();
+        let url = serverInfo.hostname + serverInfo.port + serverInfo.disciplineEndPoint;
+
+        xhr.open("GET", url);
+        xhr.send();
+
+        xhr.onload = () => {
+            let response = JSON.parse(xhr.response);
+            
+            if(xhr.status == 200){
+                if(response.length == 0){
+                    alert("No hay disciplinas dadas de alta");
+                    reject();
+                } else {
+                    disciplines = response;
+                    resolve(response);
+                } 
+            } else {
+                alert(response.error);
+                reject();
+            }
+        };
+        xhr.onerror = () => {
+            alert("Hubo un error al cargar las disciplinas");
+            reject();
+        };
+    });
+}

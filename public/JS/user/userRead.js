@@ -61,3 +61,36 @@ function searchUserByName(name, callback){
         alert("Hubo un error al cargar los encuentros"); 
     };
 }
+
+//-----------------------------------------------------------------------------------------------------------
+function loadUsersPro(){
+    return new Promise((resolve, reject) => {
+        // Prepare and send request
+        let xhr = new XMLHttpRequest();
+        let url = serverInfo.hostname + serverInfo.port + serverInfo.userEndPoint;
+
+        xhr.open("GET", url);
+        xhr.send();
+
+        xhr.onload = () => {
+            let response = JSON.parse(xhr.response);
+
+            if(xhr.status == 200){
+                if(response.length == 0){
+                    alert("No hay usuarios dados de alta");
+                    reject();
+                } else {
+                    users = response;
+                    resolve(response);
+                } 
+            } else {
+                alert(response.error);
+                reject();
+            }
+        };
+        xhr.onerror = () => {
+            alert("Hubo un error al cargar los usuarios");
+            reject();
+        };
+    });
+}
