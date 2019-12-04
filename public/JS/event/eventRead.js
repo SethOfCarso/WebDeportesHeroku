@@ -3,16 +3,13 @@
 let events = null;
 
 function prepareEventReadView(){
-    loadEvents(finishEventReadView);
-}
-
-function finishEventReadView(response){
-    // Save the events array
-    events = response;
-
-    // Load information into elements
-    convertEventToHtml();
-    convertNextEventsToHtml();
+    loadEventsPro().then((response) => {
+        loadMatches().then((response) => {
+            // Load information into elements
+            convertEventToHtml();
+            convertNextEventsToHtml();
+        });
+    });
 }
 
 function loadEvents(callback){
@@ -157,4 +154,62 @@ async function showMatches(eventId){
     // Update list of matches
     let matchesList = document.getElementById("matchesList");
     matchesList.innerHTML = matchesHtml;
+}
+//--------------------------------------------------------------------------------------------------------------
+function loadEventsPro(){
+    return new Promise((resolve, reject) => {
+        // Prepare and send request
+        let xhr = new XMLHttpRequest();
+        let url = serverInfo.hostname + serverInfo.port + serverInfo.eventEndPoint;
+
+        xhr.open("GET", url);
+        xhr.send();
+
+        xhr.onload = () => {
+            let response = JSON.parse(xhr.response);
+
+            if(xhr.status == 200){
+                if(response.length == 0){
+                    alert("No hay eventos dados de alta");
+                    reject();
+                } else {
+                    events = response;
+                    resolve(response);
+                } 
+            } else {
+                alert(response.error);
+                reject();
+            }
+        };
+        xhr.onerror = () => {
+            alert("Hubo un error al cargar los eventos"); 
+            reject();
+        };
+    });
+}
+
+function loadSingleEventPro(idEvent){
+    return new Promise((resolve, reject) => {
+        // Prepare and send request
+        let xhr = new XMLHttpRequest();
+        let url = serverInfo.hostname + serverInfo.port + serverInfo.eventEndPoint + "/" + idEvent;
+
+        xhr.open("GET", url);
+        xhr.send();
+
+        xhr.onload = () => {
+            let response = JSON.parse(xhr.response);
+
+            if(xhr.status == 200){
+                resolve(response[0]);
+            } else {
+                alert(response.error);
+                reject();
+            }
+        };
+        xhr.onerror = () => {
+            alert("Hubo un error al cargar el evento"); 
+            reject();
+        };
+    });
 }
