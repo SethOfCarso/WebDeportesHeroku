@@ -124,7 +124,7 @@ function createMatch(e) {
      */
     
     matches.id = getRandomID();
-    matches.nombreEncuentro = allTeams[firstTeam - 1].nombreEquipo + " vs " +  allTeams[secondTeam-1].nombreEquipo
+    matches.nombreEncuentro = allTeams[firstTeam].nombreEquipo + " vs " +  allTeams[secondTeam].nombreEquipo
     matches.idLugarEvento = place;
     //Score = scoreTeam1 : scoreTeam2 ; idTeam1: idTeam2
     matches.score = firstScore+":"+secondScore+";"+firstTeam+":"+secondTeam;
