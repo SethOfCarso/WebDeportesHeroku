@@ -20,7 +20,7 @@
   <!-- Nav menu / header -->
   <div id="nav-placeholder"></div>
   <script>
-    $.get("../HTML/navbarloged.html", function (data) {
+    $.get("../html/navbarloged.html", function (data) {
       $("#nav-placeholder").replaceWith(data);
     });
   </script>
@@ -86,7 +86,7 @@
             <!-- Tipo de usuario -->
             <div class="form-group">
               <label for="userType">Tipo de usuario</label>
-              <select id="userType" class="form-control" readonly>
+              <select disabled id="userType" class="form-control" readonly>
                 <option selected>Usuario</option>
                 <option>Capitan</option>
                 <option>Administrador</option>
@@ -125,7 +125,7 @@
       <div id="nav-footerPlaceHolder">
       </div>
       <script>
-        $.get("../HTML/footer.html", function (data) {
+        $.get("../html/footer.html", function (data) {
           $("#nav-footerPlaceHolder").replaceWith(data);
         });
       </script>
