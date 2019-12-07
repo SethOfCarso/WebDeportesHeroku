@@ -8,14 +8,16 @@ let eventSchema = mongoose.Schema({
     },
     encuentros: {
         type: Array,
-        required: true,
+        default: undefined,
+        required: true
     },
     fotoEvento: {
         type: String
     },
     nombreEvento: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     fechaInicio: {
         type: String,
@@ -31,10 +33,15 @@ let eventSchema = mongoose.Schema({
 let Event = mongoose.model('events', eventSchema);
 
 async function createEvent(newEvent){
-    let event = Event(newEvent);
-    // Create event
-    let docs = await event.save();
-    return docs;
+    try{
+        let event = Event(newEvent);
+        // Create event
+        let docs = await event.save();
+        return docs;
+    } catch(e) {
+        return {error: e.errmsg};
+    }
+    
 }
 
 async function getEvents(){
@@ -44,8 +51,7 @@ async function getEvents(){
         let docs = await Event.find({}, {_id:0, __v: 0}, (err, docs) => {});
         return docs;
     } catch(e){
-        console.log(e)
-        console.log("Error de conexión");
+        return {error: e.errmsg};
     }
 }
 
@@ -57,30 +63,37 @@ async function getEventById(id){
 
         return docs;
     } catch(e){
-        console.log(e)
-        console.log("Error de conexión");
+        return {error: e.errmsg};
     }
 }
 
 async function updateEvent(id, event){
-    let docs = await Event.findOneAndUpdate(
-        {id : id}, 
-        {$set:  {
-            "id" : event.id, 
-            "encuentros" : event.encuentros, 
-            "fotoEvento" : event.fotoEvento,
-            "nombreEvento" : event.nombreEvento, 
-            "fechaInicio" : event.fechaInicio,
-            "fechaFin" : event.fechaFin}
-        }, 
-        {returnNewDocument: true}
-    );
-    return docs;
+    try{
+        let docs = await Event.findOneAndUpdate(
+            {id : id}, 
+            {$set:  {
+                "id" : event.id, 
+                "encuentros" : event.encuentros, 
+                "fotoEvento" : event.fotoEvento,
+                "nombreEvento" : event.nombreEvento, 
+                "fechaInicio" : event.fechaInicio,
+                "fechaFin" : event.fechaFin}
+            }, 
+            {returnNewDocument: true}
+        );
+        return docs;
+    } catch(e) {
+        return {error: e.errmsg};
+    }
 }
 
 async function deleteEvent(id){
-    let doc = await Event.findOneAndDelete({id : id});
-    return doc;
+    try{
+        let doc = await Event.findOneAndDelete({id : id});
+        return doc;
+    } catch(e){
+        return {error: e.errmsg};
+    }
 }
 
 module.exports = {createEvent, getEvents, getEventById, deleteEvent, updateEvent};
