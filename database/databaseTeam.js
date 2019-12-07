@@ -25,7 +25,9 @@ let teamSchema = mongoose.Schema({
         required: true,
     },
     idIntegrantes: {
-        type: Array
+        type: Array,
+        default: undefined,
+        required: true
     },
     fotoEquipo: {
         type : String
@@ -36,10 +38,14 @@ let teamSchema = mongoose.Schema({
 let Team = mongoose.model('teams', teamSchema);
 
 async function createTeam(newTeam){
-    let team = Team(newTeam);
-    // Create team
-    let docs = await team.save();
-    return docs;
+    try{
+        let team = Team(newTeam);
+        // Create team
+        let docs = await team.save();
+        return docs;
+    } catch(e) {
+        return {error: e.errmsg};
+    }
 }
 
 async function getTeams(){
@@ -50,7 +56,7 @@ async function getTeams(){
         
         return docs;
     } catch(e){
-        console.log("Error de conexión");
+        return {error: e.errmsg};
     }
 }
 
@@ -62,32 +68,38 @@ async function getTeamById(id){
 
         return docs;
     } catch(e){
-        console.log(e)
-        console.log("Error de conexión");
+        return {error: e.errmsg};
     }
 }
 
 async function updateTeam(id, team){
-    let docs = await Team.findOneAndUpdate(
-        {id : id}, 
-        {$set:  {
-            "id" : team.id, 
-            "idIntegrantes" : team.idIntegrantes, 
-            "nombreEquipo" : team.nombreEquipo,
-            "fotoEquipo" : team.fotoEquipo, 
-            "autorizado" : true,
-            "idCapitan" : team.idCapitan,
-            "idDisciplina" : team.idDisciplina}
-        }, 
-        {returnNewDocument: true}
-    );
-    return docs;
+    try{
+        let docs = await Team.findOneAndUpdate(
+            {id : id}, 
+            {$set:  {
+                "id" : team.id, 
+                "idIntegrantes" : team.idIntegrantes, 
+                "nombreEquipo" : team.nombreEquipo,
+                "fotoEquipo" : team.fotoEquipo, 
+                "autorizado" : true,
+                "idCapitan" : team.idCapitan,
+                "idDisciplina" : team.idDisciplina}
+            }, 
+            {returnNewDocument: true}
+        );
+        return docs;
+    } catch(e){
+        return {error: e.errmsg};
+    }
 }
 
 async function deleteTeam(id){
-    let doc = await Team.findOneAndDelete({id : id});
-    return doc;
+    try{
+        let doc = await Team.findOneAndDelete({id : id});
+        return doc;
+    } catch(e){
+        return {error: e.errmsg};
+    }
 }
-
 
 module.exports = {createTeam, getTeams, getTeamById, updateTeam, deleteTeam};
